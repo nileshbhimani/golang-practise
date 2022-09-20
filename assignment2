@@ -1,0 +1,24 @@
+package main
+
+import (
+    "fmt"
+)
+
+func add( a int, b int) int{
+
+    for i:=1;i<=b;i++{
+        a++
+    }
+
+    return a
+}
+
+func main(){
+    var a,b int
+    fmt.Println("please enter number a and b")
+    fmt.Scan(&a)
+    fmt.Scan(&b)
+
+    c:=add(a,b)
+    fmt.Println("Final sum",c)
+}
