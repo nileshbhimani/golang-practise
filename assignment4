@@ -1,0 +1,45 @@
+package main
+
+import (
+	"fmt"
+	"sync"
+)
+
+func main() {
+	letter, number := make(chan bool), make(chan bool)
+
+	wg := sync.WaitGroup{}
+	go func() {
+        // fmt.Println("Second call here ===========")    
+		for ch := 'A'; ch <= 'Z'; ch++ {
+			letter <- true
+			fmt.Print(string(ch))
+			<-number
+		}
+		close(letter)
+	}()
+
+	wg.Add(1)
+	start := 0
+    go func() {
+		// fmt.Println("Frist call here =========== \n")
+		for {
+			number <- true
+            fmt.Print(start + 1) 
+			start += 1
+            // fmt.Println("Frist call here ===========",letter)
+			_, ok := <-letter
+			if ok == false {
+				break
+			}
+		}
+        
+		wg.Done()
+        
+    }()
+
+	<-number
+
+	wg.Wait()
+
+}
