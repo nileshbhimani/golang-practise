@@ -1,0 +1,36 @@
+
+package main
+
+import (
+	"fmt"
+)
+
+var total int
+
+func checkPair( n int,  arr []int ) bool{
+
+        for j := n + 1; j < len(arr); j++ {
+            if arr[n]+arr[j] == total {
+                fmt.Println(n, j)
+                return true
+            }
+        }
+        return false
+}
+
+func main() {
+ 
+    arr := []int{10, 5, 2, 6, 3, 8}
+
+	fmt.Println("array :", arr)
+	fmt.Println("Please enter total: ")
+	fmt.Scan(&total)
+
+	for i, _ := range arr {
+		if checkPair(i, arr) {
+			break
+		}
+	}
+
+}
+
