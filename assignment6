@@ -5,6 +5,8 @@ import (
 	"fmt"
 )
 
+// in ptogress because only 1 paire and break it but also need to find out all the pairs in array /// need to use continue
+
 var total int
 
 func checkPair( n int,  arr []int ) bool{
@@ -12,7 +14,7 @@ func checkPair( n int,  arr []int ) bool{
         for j := n + 1; j < len(arr); j++ {
             if arr[n]+arr[j] == total {
                 fmt.Println(n, j)
-                return true
+                continue //  rerurn true if only one paire want
             }
         }
         return false
