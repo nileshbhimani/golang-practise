@@ -1,0 +1,48 @@
+
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func PrimeNumber(n int) bool{
+    if n == 1 {
+		return false
+	}
+	for i := 2; i <= n/2; i++ {
+		if n%i == 0 {
+			return false
+		}
+	}
+	return true
+}
+
+func CountFunc(done chan int) {
+	for i := 0; i <= 100; i++ {
+		done <- i
+	}
+}
+
+
+func checkPrimeNumber(done chan int) {
+     for {
+		number, _ := <-done
+		if PrimeNumber(number) {
+			fmt.Println(number, "Prime")
+		} else {
+			fmt.Println(number, "Not Prime")
+		}
+	}   
+
+}
+
+func main() {
+ 
+    done := make(chan int)
+	go CountFunc(done)
+	go checkPrimeNumber(done)
+	time.Sleep(5 * time.Second)
+
+}
+
