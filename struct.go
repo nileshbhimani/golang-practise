@@ -131,3 +131,62 @@ func main() {
 	fmt.Println(e.EmpInfo())
 
 }
+
+========================= New practical start ==================================
+
+package main
+
+import (
+	"fmt"    
+)
+
+
+type Employee struct{
+    Name string
+    Age int
+}
+
+func (obj *Employee) Info(){
+
+    if obj.Name == "" {
+		obj.Name = "John Doe"
+	}
+	if obj.Age == 0 {
+		obj.Age = 25
+	}
+
+}
+
+func (e *Employee) InfoNew(){
+    e.Name = "Nilesh"
+    e.Age = 31
+}
+
+type rectangle struct {
+	length  float64
+	breadth float64
+	color   string
+}
+
+func main() {
+ 
+    emp1 := Employee{Name: "Mr. Fred"}
+	emp1.Info()
+	fmt.Println(emp1)
+
+    emp2:=Employee{}
+    emp2.InfoNew()
+    fmt.Println(emp2)
+
+    var rect1 = rectangle{10, 20, "Green"}
+	rect2 := rectangle{length: 20, breadth: 10, color: "Red"}
+
+	if rect1 == rect2 {
+		fmt.Println("True")
+	} else {
+		fmt.Println("False")
+	}
+
+}
+
+
