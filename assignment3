@@ -10,3 +10,31 @@ Explanation:
 0 --> 0
 1 --> 1
 2 --> 10
+
+
+package main
+
+import (
+    "fmt"
+	// "strings"
+    "strconv"
+    "strings"
+)
+
+var n int
+
+
+func main(){
+    fmt.Println("Please enter value of n")
+    fmt.Scan(&n) 
+    var count = 0   
+    for i:=0;i<=n;i++{
+        x := int64(i)
+        y := strconv.FormatInt(x, 2)     
+        fmt.Println("n value to binary form",y)
+
+        count += strings.Count(y, "1")           
+    }
+
+     fmt.Println("Final count of 1's", count)
+}
